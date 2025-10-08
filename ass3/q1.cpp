@@ -6,9 +6,9 @@ struct Node{
     int cnt = 0;
 };
 
-const int BRANCH_THRESHOLD = 15; 
+const int BRANCH_THRESHOLD = 15;  //only consider split if the node have emough childran 
 
-void insert_word(Node *root, const string &w){
+void insert_word(Node *root, const string &w){  //Insert Words into Trie
     Node *n = root;
     n->cnt++;
     for (char c : w){
@@ -17,7 +17,7 @@ void insert_word(Node *root, const string &w){
     }
 }
 
-// (best_index, score, support_count)
+// (best_index, score, support_count) //Finds the best place to split a word (prefix or suffix) in the trie.
 tuple<int, double, int> best_split(Node *root, const string &w){
     Node *n = root;
     int best_i = -1;
